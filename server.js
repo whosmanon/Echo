@@ -162,6 +162,20 @@ app.get('/api/debug', (req, res) => {
   res.json(result);
 });
 
+
+app.get('/api/debug-whisper', (req, res) => {
+  const { exec } = require('child_process');
+  exec('/opt/whisper.cpp/build/bin/main --help', { maxBuffer: 1024 * 1024 }, (err, stdout, stderr) => {
+    res.json({
+      error: err ? err.message : null,
+      code: err ? err.code : null,
+      signal: err ? err.signal : null,
+      stdout: stdout,
+      stderr: stderr
+    });
+  });
+});
+
 app.listen(PORT, () => {
   console.log('Echo running on http://localhost:' + PORT);
 });
