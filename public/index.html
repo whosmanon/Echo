@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 Echo</h1>
+    <p>AI subtitle generation — Free, offline</p>
+
+    <div class="upload-zone" id="uploadZone">
+      <p>📁 Drop your video here or click to select</p>
+      <input type="file" id="fileInput" accept="video/*" style="display: none;">
+    </div>
+    <div id="fileName" class="file-name"></div>
+
+    <button id="extractBtn" class="btn" disabled>Extract & Transcribe</button>
+
+    <div id="progress" class="progress" style="display: none;">
+      <p id="status">Extracting audio...</p>
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+    </div>
+
+    <div id="transcription" class="transcription" style="display: none;">
+      <h3>Transcription</h3>
+      <textarea id="subtitleText" placeholder="Edit subtitles here..."></textarea>
+    </div>
+
+    <div id="actions" class="actions" style="display: none;">
+      <button id="downloadSRT" class="btn btn-success">⬇️ Download SRT</button>
+      <button id="downloadVTT" class="btn btn-success">⬇️ Download VTT</button>
+    </div>
+
+    <p class="footer">© 2026 Echo — Made by WhosManon</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
