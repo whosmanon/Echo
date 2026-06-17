@@ -1,7 +1,7 @@
 {
-  "name": "subtitle-generator",
+  "name": "echo",
   "version": "1.0.0",
-  "description": "Free, offline subtitle generator",
+  "description": "Echo - AI-powered subtitle generator. Free, offline, no APIs.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
