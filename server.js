@@ -137,6 +137,25 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+
+app.get('/api/debug', (req, res) => {
+  const fs = require('fs');
+  const result = {};
+  try {
+    result.whisperBinExists = fs.existsSync('/opt/whisper.cpp/main');
+  } catch (e) { result.whisperBinExists = 'error: ' + e.message; }
+  try {
+    result.whisperFiles = fs.readdirSync('/opt/whisper.cpp/');
+  } catch (e) { result.whisperFiles = 'error: ' + e.message; }
+  try {
+    result.modelExists = fs.existsSync('/opt/whisper.cpp/models/ggml-base.bin');
+  } catch (e) { result.modelExists = 'error: ' + e.message; }
+  try {
+    result.modelFiles = fs.readdirSync('/opt/whisper.cpp/models/');
+  } catch (e) { result.modelFiles = 'error: ' + e.message; }
+  res.json(result);
+});
+
 app.listen(PORT, () => {
   console.log('Echo running on http://localhost:' + PORT);
 });
