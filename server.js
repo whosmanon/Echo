@@ -32,7 +32,7 @@ const upload = multer({
   },
 });
 
-const WHISPER_BIN = '/opt/whisper.cpp/main';
+const WHISPER_BIN = '/opt/whisper.cpp/build/bin/main';
 const WHISPER_MODEL = '/opt/whisper.cpp/models/ggml-base.bin';
 
 app.post('/api/transcribe', upload.single('file'), async (req, res) => {
