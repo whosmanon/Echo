@@ -33,7 +33,7 @@ const upload = multer({
 });
 
 const WHISPER_BIN = '/opt/whisper.cpp/build/bin/main';
-const WHISPER_MODEL = '/opt/whisper.cpp/models/ggml-base.bin';
+const WHISPER_MODEL = '/opt/whisper.cpp/models/ggml-tiny.bin';
 
 app.post('/api/transcribe', upload.single('file'), async (req, res) => {
   try {
@@ -154,7 +154,7 @@ app.get('/api/debug', (req, res) => {
     result.buildBinFiles = fs.readdirSync('/opt/whisper.cpp/build/bin/');
   } catch (e) { result.buildBinFiles = 'error: ' + e.message; }
   try {
-    result.modelExists = fs.existsSync('/opt/whisper.cpp/models/ggml-base.bin');
+    result.modelExists = fs.existsSync('/opt/whisper.cpp/models/ggml-tiny.bin');
   } catch (e) { result.modelExists = 'error: ' + e.message; }
   try {
     result.modelFiles = fs.readdirSync('/opt/whisper.cpp/models/');

@@ -16,7 +16,7 @@ WORKDIR /opt/whisper.cpp
 RUN make
 
 # Télécharger le modèle (base = bon compromis, ~150MB)
-RUN bash ./models/download-ggml-model.sh base
+RUN bash ./models/download-ggml-model.sh tiny
 
 WORKDIR /app
 
