@@ -51,7 +51,7 @@ app.post('/api/transcribe', upload.single('file'), async (req, res) => {
     exec(ffmpegCmd, (ffmpegErr) => {
       if (ffmpegErr) {
         console.error('FFmpeg error:', ffmpegErr);
-        return res.status(500).json({ success: false, error: 'Audio extraction failed' });
+        return res.status(500).json({ success: false, error: 'FFmpeg failed: ' + ffmpegErr.message });
       }
 
       // Lancer whisper.cpp
@@ -64,7 +64,7 @@ app.post('/api/transcribe', upload.single('file'), async (req, res) => {
 
         if (whisperErr) {
           console.error('Whisper error:', whisperErr, stderr);
-          return res.status(500).json({ success: false, error: 'Transcription failed' });
+          return res.status(500).json({ success: false, error: 'Whisper failed: ' + whisperErr.message + ' | stderr: ' + (stderr || '').substring(0, 500) });
         }
 
         const srtPath = outputBase + '.srt';
