@@ -148,6 +148,12 @@ app.get('/api/debug', (req, res) => {
     result.whisperFiles = fs.readdirSync('/opt/whisper.cpp/');
   } catch (e) { result.whisperFiles = 'error: ' + e.message; }
   try {
+    result.buildFiles = fs.readdirSync('/opt/whisper.cpp/build/');
+  } catch (e) { result.buildFiles = 'error: ' + e.message; }
+  try {
+    result.buildBinFiles = fs.readdirSync('/opt/whisper.cpp/build/bin/');
+  } catch (e) { result.buildBinFiles = 'error: ' + e.message; }
+  try {
     result.modelExists = fs.existsSync('/opt/whisper.cpp/models/ggml-base.bin');
   } catch (e) { result.modelExists = 'error: ' + e.message; }
   try {
